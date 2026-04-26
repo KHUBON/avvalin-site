@@ -17,7 +17,14 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body
+    data-theme="green"
+    data-whatsapp-number="992920102222"
+    data-title-ru="Avvalin — химчистка ковров и мебели в Панджакенте"
+    data-title-tj="Avvalin — кимиёшӯйии қолин ва мебел дар Панҷакент"
+    data-description-ru="Avvalin — профессиональная химчистка ковров, мягкой мебели, одеял, курпача и штор в Панджакенте."
+    data-description-tj="Avvalin — кимиёшӯйии касбии қолинҳо, мебели мулоим, кӯрпа, курпача ва пардаҳо дар Панҷакент."
+  >
     <header class="site-header is-top" data-header>
       <div class="container header-inner">
         <a class="brand" href="#hero" aria-label="Avvalin">
@@ -35,6 +42,10 @@
         </a>
 
         <nav class="header-nav" aria-label="Основная навигация">
+          <div class="page-switch" aria-label="Навигация по страницам">
+            <a class="page-switch__link is-current" href="./index.html" data-ru="Дом" data-tj="Хона">Дом</a>
+            <a class="page-switch__link" href="./clothing.html" data-ru="Одежда" data-tj="Либос">Одежда</a>
+          </div>
           <a href="#services" data-ru="Услуги" data-tj="Хизматҳо">Услуги</a>
           <a href="#process" data-ru="Как работаем" data-tj="Чӣ тавр кор мекунем">Как работаем</a>
           <a href="#price" data-ru="Прайс" data-tj="Нархнома">Прайс</a>
@@ -100,6 +111,10 @@
         </button>
         <div class="mobile-menu__inner">
           <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+            <div class="page-switch page-switch--menu" aria-label="Навигация по страницам">
+              <a class="page-switch__link is-current" href="./index.html" data-menu-link data-ru="Дом" data-tj="Хона">Дом</a>
+              <a class="page-switch__link" href="./clothing.html" data-menu-link data-ru="Одежда" data-tj="Либос">Одежда</a>
+            </div>
             <a href="#services" data-menu-link data-ru="Услуги" data-tj="Хизматҳо">Услуги</a>
             <a href="#process" data-menu-link data-ru="Как работаем" data-tj="Чӣ тавр кор мекунем">
               Как работаем
@@ -984,8 +999,18 @@
 
         <div class="footer-contacts">
           <p class="footer-title" data-ru="Быстрый контакт" data-tj="Тамоси зуд">Быстрый контакт</p>
-          <a href="tel:+992920102222">+992 92 010 2222</a>
-          <a href="tel:+992003991911">+992 00 399 1911</a>
+          <div class="footer-contact-entry">
+            <p class="footer-contact-label" data-ru="Ковры и мебель" data-tj="Қолин ва мебел">Ковры и мебель</p>
+            <a href="tel:+992920102222">+992 92 010 2222</a>
+          </div>
+          <div class="footer-contact-entry">
+            <p class="footer-contact-label" data-ru="Общий" data-tj="Умумӣ">Общий</p>
+            <a href="tel:+992003991911">+992 00 399 1911</a>
+          </div>
+          <div class="footer-contact-entry">
+            <p class="footer-contact-label" data-ru="Одежда" data-tj="Либос">Одежда</p>
+            <a href="tel:+992934272222">+992 93 427 2222</a>
+          </div>
           <p
             data-ru="г. Панджакент, ул. Рудаки, рядом с кофейней «Самарканди», возле рынка Хумо"
             data-tj="ш. Панҷакент, хиёбони Рӯдакӣ, паҳлуи Қаҳвахонаи Самарқандӣ, наздикии Бозори Хумо"
