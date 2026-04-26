@@ -480,26 +480,65 @@ body.menu-open {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .page-switch--menu .page-switch__link {
-  min-height: 92px;
+  position: relative;
+  min-height: 116px;
   padding: 18px 16px;
-  align-items: flex-end;
-  justify-content: flex-start;
-  border-radius: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 22px;
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.16);
   color: #fff;
+  text-align: left;
+  overflow: hidden;
+}
+
+.page-switch--menu .page-switch__title {
   font-family: "Fraunces", serif;
-  font-size: clamp(1.45rem, 5vw, 1.8rem);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 5.4vw, 1.7rem);
   line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.page-switch--menu .page-switch__sub {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .page-switch--menu .page-switch__link.is-current {
   background: var(--brand-primary);
   border-color: var(--brand-primary);
+  color: #fff;
+}
+
+.page-switch--menu .page-switch__link.is-current .page-switch__sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.page-switch--menu .page-switch__link::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.page-switch--menu .page-switch__link.is-current::before {
+  background: #fff;
 }
 
 .mobile-menu__meta {
@@ -1138,6 +1177,180 @@ body.menu-open {
 .contacts-block a,
 .contacts-socials a {
   width: fit-content;
+}
+
+.contacts-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contacts-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 12px;
+  border-radius: 999px;
+  background: rgba(var(--brand-primary-rgb), 0.08);
+  color: var(--brand-dark);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.18);
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.contacts-socials a:hover,
+.contacts-socials a:focus-visible {
+  background: rgba(var(--brand-primary-rgb), 0.14);
+  border-color: rgba(var(--brand-primary-rgb), 0.32);
+  transform: translateY(-1px);
+}
+
+.contacts-socials a svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  color: var(--brand-primary);
+  flex-shrink: 0;
+}
+
+.contacts-socials a span {
+  color: var(--brand-dark);
+}
+
+.cross-promo {
+  padding: 0 22px 64px;
+}
+
+.cross-promo__card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 28px;
+  min-height: 320px;
+  isolation: isolate;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 24px 60px rgba(15, 42, 29, 0.18);
+}
+
+.cross-promo__card:hover,
+.cross-promo__card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 36px 80px rgba(15, 42, 29, 0.26);
+}
+
+.cross-promo__media,
+.cross-promo__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cross-promo__media {
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.04);
+  transition: transform 0.6s ease;
+}
+
+.cross-promo__card:hover .cross-promo__media {
+  transform: scale(1.08);
+}
+
+.cross-promo[data-target="clothing"] .cross-promo__media {
+  background-image: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1800&q=85&auto=format&fit=crop");
+}
+
+.cross-promo[data-target="home"] .cross-promo__media {
+  background-image: url("https://images.unsplash.com/photo-1600166898405-da9535204843?w=1800&q=85&auto=format&fit=crop");
+}
+
+.cross-promo[data-target="clothing"] .cross-promo__overlay {
+  background: linear-gradient(120deg, rgba(31, 8, 8, 0.82) 0%, rgba(31, 8, 8, 0.55) 60%, rgba(31, 8, 8, 0.35) 100%);
+}
+
+.cross-promo[data-target="home"] .cross-promo__overlay {
+  background: linear-gradient(120deg, rgba(15, 42, 29, 0.82) 0%, rgba(15, 42, 29, 0.55) 60%, rgba(15, 42, 29, 0.35) 100%);
+}
+
+.cross-promo__content {
+  position: relative;
+  z-index: 1;
+  padding: 56px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+}
+
+.cross-promo__kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+
+.cross-promo__title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  line-height: 1.12;
+  margin: 0;
+  color: #fff;
+}
+
+.cross-promo__sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  margin: 0;
+  max-width: 560px;
+}
+
+.cross-promo__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--brand-dark);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease;
+}
+
+.cross-promo[data-target="clothing"] .cross-promo__cta {
+  color: #1F0808;
+}
+
+.cross-promo__cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cross-promo__card:hover .cross-promo__cta,
+.cross-promo__card:focus-visible .cross-promo__cta {
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .cross-promo {
+    padding: 0 14px 48px;
+  }
+
+  .cross-promo__card {
+    min-height: 280px;
+    border-radius: 24px;
+  }
+
+  .cross-promo__content {
+    padding: 40px 18px;
+  }
 }
 
 .contacts-map {
