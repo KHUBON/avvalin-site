@@ -121,6 +121,8 @@ const initLanguage = () => {
 const initMobileMenu = () => {
   const toggle = document.querySelector("[data-menu-toggle]");
   const menu = document.querySelector("[data-mobile-menu]");
+  const backdrop = document.querySelector("[data-menu-backdrop]");
+  const closeBtn = document.querySelector("[data-menu-close]");
   const links = document.querySelectorAll("[data-menu-link]");
 
   if (!toggle || !menu) {
@@ -131,6 +133,7 @@ const initMobileMenu = () => {
     toggle.classList.toggle("is-open", open);
     menu.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-hidden", String(!open));
     document.body.classList.toggle("menu-open", open);
   };
 
@@ -138,8 +141,22 @@ const initMobileMenu = () => {
     setMenuState(!menu.classList.contains("is-open"));
   });
 
+  if (backdrop) {
+    backdrop.addEventListener("click", () => setMenuState(false));
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => setMenuState(false));
+  }
+
   links.forEach((link) => {
     link.addEventListener("click", () => setMenuState(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("is-open")) {
+      setMenuState(false);
+    }
   });
 
   window.addEventListener("resize", () => {

@@ -81,8 +81,23 @@
           </button>
         </div>
       </div>
+    </header>
 
-      <div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+      <div class="mobile-menu__backdrop" data-menu-backdrop aria-hidden="true"></div>
+      <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+        <button
+          class="mobile-menu__close"
+          type="button"
+          data-menu-close
+          aria-label="Закрыть меню"
+          data-aria-ru="Закрыть меню"
+          data-aria-tj="Бастани меню"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
         <div class="mobile-menu__inner">
           <nav class="mobile-menu__nav" aria-label="Mobile navigation">
             <a href="#services" data-menu-link data-ru="Услуги" data-tj="Хизматҳо">Услуги</a>
@@ -100,11 +115,22 @@
             >
               Профессиональная химчистка ковров, мебели и текстиля в Панджакенте.
             </p>
-            <a href="tel:+992920102222">+992 92 010 2222</a>
+            <a class="mobile-menu__phone" href="tel:+992920102222">+992 92 010 2222</a>
+            <a class="mobile-menu__phone" href="tel:+992003991911">+992 00 399 1911</a>
+            <a
+              class="mobile-menu__wa"
+              href="https://wa.me/992920102222"
+              target="_blank"
+              rel="noreferrer"
+              data-ru="Написать в WhatsApp"
+              data-tj="Дар WhatsApp навиштан"
+            >
+              Написать в WhatsApp
+            </a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
     <main>
       <section class="hero" id="hero">
