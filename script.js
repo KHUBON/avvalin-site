@@ -2,7 +2,7 @@ const STORAGE_KEY = "avvalin-language";
 const DEFAULT_LANGUAGE = "ru";
 const SUPPORTED_LANGUAGES = new Set(["ru", "tj"]);
 
-const META = {
+const DEFAULT_META = {
   ru: {
     title: "Avvalin — химчистка ковров и мебели в Панджакенте",
     description:
@@ -14,6 +14,19 @@ const META = {
       "Avvalin — кимиёшӯйии касбии қолинҳо, мебели мулоим, кӯрпа, курпача ва пардаҳо дар Панҷакент.",
   },
 };
+
+const getPageMeta = (language) => {
+  const body = document.body;
+  const titleKey = language === "ru" ? "titleRu" : "titleTj";
+  const descriptionKey = language === "ru" ? "descriptionRu" : "descriptionTj";
+
+  return {
+    title: body?.dataset[titleKey] || DEFAULT_META[language].title,
+    description: body?.dataset[descriptionKey] || DEFAULT_META[language].description,
+  };
+};
+
+const getWhatsAppNumber = () => document.body?.dataset.whatsappNumber || "992920102222";
 
 const getCurrentLanguage = () => {
   const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -78,7 +91,7 @@ const updateProcessSummary = (language) => {
 };
 
 const updateMeta = (language) => {
-  const content = META[language];
+  const content = getPageMeta(language);
   const description = document.querySelector('meta[name="description"]');
 
   if (!content) {
@@ -320,16 +333,13 @@ const initRequestForm = () => {
         ? serviceField.options[serviceField.selectedIndex]?.textContent?.trim() || ""
         : String(formData.get("service") || "").trim();
     const comment = String(formData.get("comment") || "").trim();
+    const whatsappNumber = form.dataset.whatsappNumber || getWhatsAppNumber();
 
     const text = `Здравствуйте! Меня зовут ${name}. Телефон: ${phone}. Услуга: ${service}. ${
       comment || ""
     }`;
 
-    window.open(
-      `https://wa.me/992920102222?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener"
-    );
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
   });
 };
 
